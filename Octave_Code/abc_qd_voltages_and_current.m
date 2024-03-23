@@ -19,7 +19,7 @@ for angle=0:0.25:360
   A = [rs wr*ld; -wr*lq rs ];   %Impedance Matrix
   C = [-wr*lamaf; 0];     %Motional emf vector
   iqd = A^-1 *(vqd+C);    % qd currents in rotor ref. frames
-  Te(n)=0.75*p*(lamaf +(ld-lq)*iqd(2)*idq(1);   %Air gap Torque
+  Te(n)=0.75*p*(lamaf +(ld-lq)*iqd(2))*iqd(1);   %Air gap Torque
   iqs(n) = iqd(1);
   ids(n) = iqd(2);
   vqs(n) = vqd(1); vds(n)=vqd(2);
@@ -31,7 +31,8 @@ for angle=0:0.25:360
   ias(n) = iabc(1); ibs(n) = iabc(2); ics(n) = iabc(3);
   thet(n) = angle;
   n = n + 1;
-endfor
+end 
+
 
 subplot(5, 1, 1);
 plot(thet, vas, 'k', thet, vbs, 'k', thet, vcs, 'k');
